@@ -1,0 +1,28 @@
+<div>
+  <form class="row g-3" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email<span class="requiredStar">*</span></label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="signinData.email" formControlName="email" />
+      <div *ngIf="submitted && signinForm.controls['email'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signinForm.controls['email'].errors">Email is required</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="password" class="form-label">Password<span class="requiredStar">*</span></label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        [(ngModel)]="signinData.password"
+        formControlName="password"
+      />
+      <div *ngIf="submitted && signinForm.controls['password'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signinForm.controls['password'].errors">Password is required</div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+<div>
+  <form class="row g-3" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-4">
+      <label for="name" class="form-label">Name<span class="requiredStar">*</span></label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="signupData.name" formControlName="name" />
+      <div *ngIf="submitted && signupForm.controls['name'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['name'].errors">Name is required</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email<span class="requiredStar">*</span></label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="signupData.email" formControlName="email" />
+      <div *ngIf="submitted && signupForm.controls['email'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['email'].errors">Email is required</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="password" class="form-label">Password<span class="requiredStar">*</span></label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        [(ngModel)]="signupData.password"
+        formControlName="password"
+      />
+      <div *ngIf="submitted && signupForm.controls['password'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['password'].errors">Password is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="city" class="form-label">City<span class="requiredStar">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        aria-describedby="validationServer03Feedback"
+        [(ngModel)]="signupData.city"
+        formControlName="city"
+      />
+      <div *ngIf="submitted && signupForm.controls['city'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['city'].errors">City is required</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label for="state" class="form-label">State<span class="requiredStar">*</span></label>
+      <select
+        class="form-select"
+        id="state"
+        aria-describedby="validationServer04Feedback"
+        [(ngModel)]="signupData.state"
+        formControlName="state"
+      >
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+      <!-- <div *ngIf="submitted && signupForm.controls['state'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['state'].errors">State is required</div>
+      </div> -->
+      <!-- <div id="validationServer04Feedback" class="invalid-feedback">Please select a valid state.</div> -->
+    </div>
+    <div class="col-md-3">
+      <label for="zip" class="form-label">Zip<span class="requiredStar">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="zip"
+        aria-describedby="validationServer05Feedback"
+        [(ngModel)]="signupData.zip"
+        formControlName="zip"
+      />
+      <div *ngIf="submitted && signupForm.controls['zip'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="signupForm.controls['zip'].errors">Zip is required</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="invalidCheck3"
+          aria-describedby="invalidCheck3Feedback"
+        />
+        <label class="form-check-label" for="invalidCheck3"> Agree to terms and conditions </label>
+        <!-- <div id="invalidCheck3Feedback" class="invalid-feedback">You must agree before submitting.</div> -->
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>

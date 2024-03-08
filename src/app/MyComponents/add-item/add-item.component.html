@@ -1,0 +1,41 @@
+<p>add-item works!</p>
+
+
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="todoForm">
+    <div class="form-group">
+      <label>Title<span class="requiredStar">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && todoForm.controls['title'].errors }"
+        id="title"
+        name="title"
+        aria-describedby="emailHelp"
+        placeholder="Title"
+        [(ngModel)]="todoData.title"
+        formControlName="title"
+      />
+      <div *ngIf="submitted && todoForm.controls['title'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="todoForm.controls['title'].errors">Title is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description<span class="requiredStar">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && todoForm.controls['description'].errors }"
+        id="description"
+        name="description"
+        placeholder="description"
+        [(ngModel)]="todoData.description"
+        formControlName="description"
+      />
+      <div *ngIf="submitted && todoForm.controls['description'].invalid" class="alert alert-danger validationError">
+        <div *ngIf="todoForm.controls['description'].errors">Description is required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>

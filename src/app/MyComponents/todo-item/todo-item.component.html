@@ -1,0 +1,38 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of todoData; let id = index">
+      <td>{{ id + 1 }}</td>
+      <td>{{ i.title }}</td>
+      <td>{{ i.description }}</td>
+      <td>
+        <button (click)="updateTodo(i._id)" class="btn btn-primary">Edit</button>
+        <button (click)="open(content, i?._id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+        <button (click)="todoDetails(i._id)" class="btn btn-primary" style="margin-left: 10px">View</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="delete-modal">Confirmation</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <div>Are you sure you want to delete the record?</div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteTodo()">Delete</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
